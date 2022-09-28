@@ -1,15 +1,18 @@
-import React from 'react';
+ import React from 'react';
 import styled from 'styled-components';
 import Logo from './assets/img/logo.png'
 
+
+
 export default function Cabecalho(){
+    
     return(
         <>
         <LogoConteiner>
-            <img src={Logo} alt="Logo em formato de raio"></img>
-            <h1>ZapRecall</h1>
-        </LogoConteiner>
-        </>
+     <img src={Logo} alt="Logo em formato de raio"></img>
+     <h1>ZapRecall</h1>
+    </LogoConteiner>
+         </>
     )
 }
 
@@ -32,3 +35,6 @@ h1{
   margin-left: 20px;
 }
 `
+
+// {bemvindo ? 
+//  : null}

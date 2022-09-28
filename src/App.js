@@ -1,16 +1,19 @@
 import React from 'react';
 import styled from 'styled-components';
-import Cabecalho from './Cabecalho';
-import Footer from './Footer';
-
+import { useState } from 'react';
+import Inicial from './Inicial';
+import Game from './Game';
 
 export default function App(){
-    console.log("Ola")
+
+    const [bemvindo, setBemVindo] = useState(false)
+    
+
+
     return(
     <>
     <Screen>
-        <Cabecalho/>
-        <Footer/>
+         {bemvindo ? <Inicial/> : <Game/>}
     </Screen>
     </>)
 }
