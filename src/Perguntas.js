@@ -2,30 +2,20 @@ import React from 'react';
 import styled from 'styled-components';
 import { useState } from 'react';
 import Lista from './Lista'
+import Play from './assets/img/seta_play.png'
+import BotaoVirar from './assets/img/seta_virar.png'
 
 export default function Perguntas(){
-    
-    const [Abriu, setAbriu] = useState(false)
 
-    function abrirCard(props){
-        console.log(props)
 
-        // setAbriu(true)
-    }
-
-    function fecharCard(props){
-        
-    }
-
+    const [fechado, setFechado] = useState(
+        <Fechada onClick={() => (setFechado(<Aberta>Teste</Aberta>))}>Pergunta<img src={Play} alt="Seta de Play"/></Fechada>
+        )
+   
     return(
         <>
         <ul>
-        {Lista.map((p, index) => 
-            <li>
-                 {Abriu ? <></> : <Fechada key={index} onClick={abrirCard}>{p.Q}</Fechada>}
-                 {Abriu ? <Aberta key={index} onClick={fecharCard}>{p.R}</Aberta> : <></>}
-            </li>
-        )}
+            {Lista.map((e, index) => <li>{fechado}</li>)}
         </ul>
         </>
     )
@@ -42,15 +32,13 @@ width: 300px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  
-p{
-    font-family: 'Recursive';
+  font-family: 'Recursive';
   font-style: normal;
   font-weight: 700;
   font-size: 16px;
   line-height: 19px;
   color: #333333;
-}
+
   
   `
 

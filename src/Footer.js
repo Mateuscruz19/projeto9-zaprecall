@@ -11,6 +11,7 @@ export default function Footer(){
                 <BotaoQuaseLembrei>quase não <br/> lembrei</BotaoQuaseLembrei>
                 <BotaoRespostaZap>Zap!</BotaoRespostaZap>
             </ConteinerBotoes>
+            <p>1/4 CONCLUÍDOS</p>
         </FooterInicial>
         </>
     )
@@ -26,10 +27,21 @@ flex-direction: column;
 align-items: center;
 justify-content: center;
 font-family: 'Recursive';
+font-style: normal;
+font-weight: 700;
+font-size: 16px;
+line-height: 19px;
+
+color: #333333;
+
+
+p{
+    font-family: 'Recursive';
 font-weight: 400;
 font-size: 18px;
 color: #333333;
 padding: 10px;
+}
 `
 const ConteinerBotoes = styled.div`
     display: flex;

@@ -6,14 +6,14 @@ import Game from './Game';
 
 export default function App(){
 
-    const [bemvindo, setBemVindo] = useState(false)
+    const [bemvindo, setBemVindo] = useState(true)
     
 
 
     return(
     <>
     <Screen>
-         {bemvindo ? <Inicial/> : <Game/>}
+         {bemvindo ? <Inicial setBemVindo={setBemVindo} /> : <Game/>}
     </Screen>
     </>)
 }

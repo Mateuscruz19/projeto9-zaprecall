@@ -3,11 +3,13 @@ import styled from 'styled-components';
 import { useState } from 'react';
 import Logo from './assets/img/logo.png'
 
-export default function Inicial() {
+export default function Inicial(props) {
 
     const [opcoes, SetOpcao] = useState(0)
-
     
+    function IniciarJogo(){
+        console.log(props.setBemVindo(false))
+    }
 
     return (
         <>
@@ -22,7 +24,7 @@ export default function Inicial() {
                     <option value="3">Css</option>
                     <option value="4">Html</option>
                 </select>
-                <button>Iniciar Recall!</button>
+                <button onClick={IniciarJogo}>Iniciar Recall!</button>
             </Conteiner>
         </>
     )
