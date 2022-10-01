@@ -19,6 +19,7 @@ export default function Card(props){
        setFinalizado(true)
        const Clicado = props.pergunta.Numero
        props.setRespondido([...props.respondido,Clicado])
+       props.setAbriu()
     }
 
     function quaseNaoLembrei(){
@@ -26,6 +27,7 @@ export default function Card(props){
       setFinalizado(true)
       const Clicado = props.pergunta.Numero
        props.setRespondido([...props.respondido,Clicado])
+       props.setAbriu()
     }
 
     function zap(){
@@ -33,8 +35,7 @@ export default function Card(props){
       setFinalizado(true)
       const Clicado = props.pergunta.Numero
       props.setRespondido([...props.respondido,Clicado])
-
-
+      props.setAbriu()
       // setAberto(false)
 
     }
@@ -54,12 +55,12 @@ export default function Card(props){
                   <BotaoRespostaZap onClick={zap}>Zap!</BotaoRespostaZap>
              </ConteinerBotoes> 
              :
-              <img onClick={() => setClicou(true)} src={Virar} alt="Botao de girar"/>} 
+              <img  src={Virar} alt="Botao de girar" onClick={() => setClicou(true)} />} 
             </Aberta> 
 
             :
 
-             <Fechada onClick={() => props.setAbriu(props.pergunta.Numero)}>Pergunta {props.pergunta.Numero} <img src={Play} alt="Seta de play generica"/></Fechada>}
+             <Fechada final={props.respondido} numeroclicado={props.pergunta.Numero} onClick={() => props.setAbriu(props.pergunta.Numero)}><p>Pergunta {props.pergunta.Numero}</p> <img src={Play} alt="Seta de play generica"/></Fechada>}
         </li>
 
     )
@@ -84,6 +85,10 @@ width: 300px;
   font-size: 16px;
   line-height: 19px;
   color: #333333;
+
+  p{
+    text-decoration: ${props => props.final.includes(props.numeroclicado) ? "line-through" : ""}
+  }
 
   `;
 
