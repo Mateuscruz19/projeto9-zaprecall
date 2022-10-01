@@ -13,7 +13,7 @@ export default function Footer(props){
     return(
         <>
         <FooterInicial>
-            <p>{props.concluidas}/{Lista.length} CONCLUÍDOS</p>
+            <p>{props.concluidas}/{Lista[props.opcao].length} CONCLUÍDOS</p>
             {Lista.map(() => <img/>)}
         </FooterInicial>
         </>

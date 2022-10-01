@@ -1,28 +1,33 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-// import { useState } from 'react';
+import { useState } from 'react';
 import Play from "./assets/img/seta_play.png"
 import Virar from "./assets/img/seta_virar.png"
-import IconeSim from './assets/img/icone_certo.png'
-import IconeTalvez from './assets/img/icone_quase.png'
-import IconeNao from './assets/img/icone_erro.png'
+
+
+// import IconeSim from './assets/img/icone_certo.png'
+// import IconeTalvez from './assets/img/icone_quase.png'
+// import IconeNao from './assets/img/icone_erro.png'
 
 export default function Card(props){
    
     const [Clicou, setClicou] = useState(false)
-   
+    const [Finalizado, setFinalizado] = useState(false)
    
     function naoLembrei(){
        props.setConcluidas(props.concluidas+1)
+       setFinalizado(true)
+       
     }
 
     function quaseNaoLembrei(){
       props.setConcluidas(props.concluidas+1)
-        
+      setFinalizado(true)
     }
 
     function zap(){
       props.setConcluidas(props.concluidas+1)
+      setFinalizado(true)
     }
 
 
@@ -40,7 +45,7 @@ export default function Card(props){
                   <BotaoRespostaZap onClick={zap}>Zap!</BotaoRespostaZap>
              </ConteinerBotoes> 
              :
-              <img src={Virar} alt="Botao de girar" onClick={() => setClicou(true)}/>} 
+              <img onClick={() => setClicou(true)} src={Virar} alt="Botao de girar"/>} 
             </Aberta> 
 
             :
@@ -71,8 +76,7 @@ width: 300px;
   line-height: 19px;
   color: #333333;
 
-  
-  `
+  `;
 
 const Aberta = styled.div`
 width: 300px;

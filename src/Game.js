@@ -9,12 +9,12 @@ export default function Game(props){
 
     const [Clicadas, setClicadas] = useState([])
     const [Concluidas, setConcluidas] = useState(0)
-    
+
     return(
     <>
          <Cabecalho/>
          <Perguntas  opcao={props.opcao} setOpcao={props.setOpcao}  clicadas={Clicadas} setClicadas={setClicadas}  concluidas={Concluidas}  setConcluidas={setConcluidas} />
-        <Footer clicadas={Clicadas} concluidas={Concluidas} />
+        <Footer clicadas={Clicadas} opcao={props.opcao} concluidas={Concluidas} />
     </>)
 }
 
