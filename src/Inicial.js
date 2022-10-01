@@ -8,13 +8,13 @@ export default function Inicial(props) {
     const [opcoes, SetOpcao] = useState(0)
     
     function IniciarJogo(){
-        console.log(props.setBemVindo(false))
+        props.setBemVindo(false)
     }
 
     return (
         <>
             <Conteiner>
-                <img src={Logo} />
+                <img src={Logo} alt="Logo em formato de raio" />
                 <h1>ZapRecall</h1>
                 <input placeholder='Digite sua meta de zaps...'></input>
                 <select name='Deck' value={opcoes} onChange={o => SetOpcao(o.opcoes)}>

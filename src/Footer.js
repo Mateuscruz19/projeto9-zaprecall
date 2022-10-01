@@ -1,17 +1,20 @@
 import React from 'react';
 import styled from 'styled-components';
-import react, { useState } from 'react';
+import { useState } from 'react';
+import Lista from './Lista';
+import Card from './Card';
 
-export default function Footer(){
+// import IconeSim from './assets/img/icone_certo.png'
+// import IconeTalvez from './assets/img/icone_quase.png'
+// import IconeNao from './assets/img/icone_erro.png'
+
+export default function Footer(props){
+
     return(
         <>
         <FooterInicial>
-            <ConteinerBotoes>
-                <BotaoNaoLembrei>Não <br/> lembrei</BotaoNaoLembrei>
-                <BotaoQuaseLembrei>quase não <br/> lembrei</BotaoQuaseLembrei>
-                <BotaoRespostaZap>Zap!</BotaoRespostaZap>
-            </ConteinerBotoes>
-            <p>1/4 CONCLUÍDOS</p>
+            <p>{props.concluidas}/{Lista.length} CONCLUÍDOS</p>
+            {Lista.map(() => <img/>)}
         </FooterInicial>
         </>
     )
@@ -43,40 +46,6 @@ color: #333333;
 padding: 10px;
 }
 `
-const ConteinerBotoes = styled.div`
-    display: flex;
-    width: 80%;
-    justify-content: space-between;
-    margin: 20px;
-`
 
 
-
-const BotaoNaoLembrei = styled.button`
-    width: 90px;
-  font-family: 'Recursive';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 12px;
-  line-height: 14px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  color: #FFFFFF;
-  background: #FF3030;
-  border-radius: 5px;
-  border: 1px solid #FF3030;
-  padding:5px;
-`
-const BotaoQuaseLembrei = styled(BotaoNaoLembrei)`
-background: #FF922E;
-border: 1px solid #FF922E;
-`
-
-const BotaoRespostaZap = styled(BotaoNaoLembrei)`
-background: #2FBE34;
-border: 1px solid #2FBE34;
-`
-  
 
