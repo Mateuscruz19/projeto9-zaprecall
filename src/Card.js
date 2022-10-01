@@ -5,21 +5,23 @@ import Play from "./assets/img/seta_play.png"
 import Virar from "./assets/img/seta_virar.png"
 
 
-// import IconeSim from './assets/img/icone_certo.png'
-// import IconeTalvez from './assets/img/icone_quase.png'
-// import IconeNao from './assets/img/icone_erro.png'
+ import IconeSim from './assets/img/icone_certo.png'
+ import IconeTalvez from './assets/img/icone_quase.png'
+ import IconeNao from './assets/img/icone_erro.png'
 
 export default function Card(props){
    
     const [Clicou, setClicou] = useState(false)
     const [Finalizado, setFinalizado] = useState(false)
-   
+    const [Resultado, setResultado] = useState(IconeSim)
+
     function naoLembrei(){
        props.setConcluidas(props.concluidas+1)
        setFinalizado(true)
        const Clicado = props.pergunta.Numero
        props.setRespondido([...props.respondido,Clicado])
        props.setAbriu()
+       setResultado(IconeNao)
     }
 
     function quaseNaoLembrei(){
@@ -28,6 +30,7 @@ export default function Card(props){
       const Clicado = props.pergunta.Numero
        props.setRespondido([...props.respondido,Clicado])
        props.setAbriu()
+       setResultado(IconeTalvez)
     }
 
     function zap(){
@@ -36,7 +39,7 @@ export default function Card(props){
       const Clicado = props.pergunta.Numero
       props.setRespondido([...props.respondido,Clicado])
       props.setAbriu()
-      // setAberto(false)
+      setResultado(IconeSim)
 
     }
 
@@ -60,7 +63,7 @@ export default function Card(props){
 
             :
 
-             <Fechada final={props.respondido} numeroclicado={props.pergunta.Numero} onClick={() => props.setAbriu(props.pergunta.Numero)}><p>Pergunta {props.pergunta.Numero}</p> <img src={Play} alt="Seta de play generica"/></Fechada>}
+             <Fechada final={props.respondido} numeroclicado={props.pergunta.Numero} onClick={() => props.setAbriu(props.pergunta.Numero)}><p>Pergunta {props.pergunta.Numero}</p> <img src={props.respondido.includes(props.pergunta.Numero) ? Resultado : Play} alt="Seta de play generica"/></Fechada>}
         </li>
 
     )
