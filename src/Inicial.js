@@ -5,8 +5,8 @@ import Logo from './assets/img/logo.png'
 
 export default function Inicial(props) {
 
-    const [opcoes, SetOpcao] = useState(0)
     
+
     function IniciarJogo(){
         props.setBemVindo(false)
     }
@@ -17,12 +17,11 @@ export default function Inicial(props) {
                 <img src={Logo} alt="Logo em formato de raio" />
                 <h1>ZapRecall</h1>
                 <input placeholder='Digite sua meta de zaps...'></input>
-                <select name='Deck' value={opcoes} onChange={o => SetOpcao(o.opcoes)}>
-                    <option value="0">Escolha seu deck</option>
-                    <option value="1">React</option>
-                    <option value="2">JavaScript</option>
-                    <option value="3">Css</option>
-                    <option value="4">Html</option>
+                <select name='Deck' value={props.opcao} onChange={o => props.setOpcao(o.target.value)}>
+                    <option value="0">React</option>
+                    <option value="1">JavaScript</option>
+                    <option value="2">Css</option>
+                    <option value="3">Html</option>
                 </select>
                 <button onClick={IniciarJogo}>Iniciar Recall!</button>
             </Conteiner>

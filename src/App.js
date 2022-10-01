@@ -7,13 +7,14 @@ import Game from './Game';
 export default function App(){
 
     const [bemvindo, setBemVindo] = useState(true)
+    const [opcoes, SetOpcao] = useState(0)
     
 
 
     return(
     <>
     <Screen>
-         {bemvindo ? <Inicial setBemVindo={setBemVindo} /> : <Game/>}
+         {bemvindo ? <Inicial setBemVindo={setBemVindo} opcao={opcoes} setOpcao={SetOpcao} /> : <Game opcao={opcoes} setOpcao={SetOpcao} />}
     </Screen>
     </>)
 }
