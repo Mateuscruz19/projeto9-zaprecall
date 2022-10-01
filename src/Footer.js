@@ -12,7 +12,7 @@ export default function Footer(props){
 
     return(
         <>
-        <FooterInicial>
+        <FooterInicial concluidas={props.concluidas} total={Lista[props.opcao].length}>
             <p>{props.concluidas}/{Lista[props.opcao].length} CONCLUÍDOS</p>
             {Lista.map(() => <img/>)}
         </FooterInicial>
@@ -44,6 +44,7 @@ font-weight: 400;
 font-size: 18px;
 color: #333333;
 padding: 10px;
+text-decoration: ${props => props.concluidas === props.total ? "line-through" : ""}
 }
 `
 

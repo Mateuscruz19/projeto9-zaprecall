@@ -17,17 +17,26 @@ export default function Card(props){
     function naoLembrei(){
        props.setConcluidas(props.concluidas+1)
        setFinalizado(true)
-       
+       const Clicado = props.pergunta.Numero
+       props.setRespondido([...props.respondido,Clicado])
     }
 
     function quaseNaoLembrei(){
       props.setConcluidas(props.concluidas+1)
       setFinalizado(true)
+      const Clicado = props.pergunta.Numero
+       props.setRespondido([...props.respondido,Clicado])
     }
 
     function zap(){
       props.setConcluidas(props.concluidas+1)
       setFinalizado(true)
+      const Clicado = props.pergunta.Numero
+      props.setRespondido([...props.respondido,Clicado])
+
+
+      // setAberto(false)
+
     }
 
 
