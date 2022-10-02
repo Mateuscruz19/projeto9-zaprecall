@@ -13,7 +13,7 @@ export default function Perguntas(props){
 
     return(
     <ul> 
-        {Escolhido.map((p, index) => <Card  respondido={PerguntaRespondida} setRespondido={setRespondida}  clicadas={props.clicadas} setClicadas={props.setClicadas}  concluidas={props.concluidas}  setConcluidas={props.setConcluidas} t={props.clicadas} pergunta={p} key={index} aberto={p.Numero === Abriu} setAbriu={setAbriu}/> )}
+        {Escolhido.map((p, index) => <Card setZap={props.setZap} zaps={props.zaps} setMetas={props.setMetas} respondido={PerguntaRespondida} setRespondido={setRespondida}  clicadas={props.clicadas} setClicadas={props.setClicadas}  concluidas={props.concluidas}  setConcluidas={props.setConcluidas} t={props.clicadas} pergunta={p} key={index} aberto={p.Numero === Abriu} setAbriu={setAbriu}/> )}
         </ul>
 
     )

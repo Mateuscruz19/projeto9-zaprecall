@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import { useState } from 'react';
 import Lista from './Lista';
 import Card from './Card';
+import Sad from './assets/img/sad.png'
+import Party from './assets/img/party.png'
 
 // import IconeSim from './assets/img/icone_certo.png'
 // import IconeTalvez from './assets/img/icone_quase.png'
@@ -14,7 +16,9 @@ export default function Footer(props){
         <>
         <FooterInicial concluidas={props.concluidas} total={Lista[props.opcao].length}>
             <p>{props.concluidas}/{Lista[props.opcao].length} CONCLUÍDOS</p>
-            {Lista.map(() => <img/>)}
+            {props.concluidas === Lista[props.opcao].length ? 
+            props.zaps >= props.metas ? <Result>Parabéns,voce bateu a meta de Zaps!!! <img src={Party}></img></Result>
+            : <Result>Putz,você não bateu sua meta de zaps,mas nao desista!<img src={Sad}/></Result> : <></>}
         </FooterInicial>
         </>
     )
@@ -48,5 +52,10 @@ text-decoration: ${props => props.concluidas === props.total ? "line-through" : 
 }
 `
 
-
+const Result = styled.span`
+ font-family: 'Recursive';
+font-weight: 400;
+font-size: 18px;
+color: #333333;
+padding: 10px;`
 

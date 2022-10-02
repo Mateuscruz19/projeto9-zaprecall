@@ -14,6 +14,7 @@ export default function Card(props){
     const [Clicou, setClicou] = useState(false)
     const [Finalizado, setFinalizado] = useState(false)
     const [Resultado, setResultado] = useState(IconeSim)
+    const [cor, setCor] = useState("Black")
 
     function naoLembrei(){
        props.setConcluidas(props.concluidas+1)
@@ -22,6 +23,7 @@ export default function Card(props){
        props.setRespondido([...props.respondido,Clicado])
        props.setAbriu()
        setResultado(IconeNao)
+       setCor("Red")
     }
 
     function quaseNaoLembrei(){
@@ -31,7 +33,9 @@ export default function Card(props){
        props.setRespondido([...props.respondido,Clicado])
        props.setAbriu()
        setResultado(IconeTalvez)
+       setCor("Orange")
     }
+
 
     function zap(){
       props.setConcluidas(props.concluidas+1)
@@ -40,7 +44,8 @@ export default function Card(props){
       props.setRespondido([...props.respondido,Clicado])
       props.setAbriu()
       setResultado(IconeSim)
-
+      setCor("Green")
+      props.setZap(props.zaps+1)
     }
 
 
@@ -63,7 +68,10 @@ export default function Card(props){
 
             :
 
-             <Fechada final={props.respondido} numeroclicado={props.pergunta.Numero} onClick={() => props.setAbriu(props.pergunta.Numero)}><p>Pergunta {props.pergunta.Numero}</p> <img src={props.respondido.includes(props.pergunta.Numero) ? Resultado : Play} alt="Seta de play generica"/></Fechada>}
+             <Fechada disabled final={props.respondido} numeroclicado={props.pergunta.Numero} cor={cor}>
+              <p>Pergunta {props.pergunta.Numero}</p>
+              <img onClick={props.respondido.includes(props.pergunta.Numero) ? undefined : (() => props.setAbriu(props.pergunta.Numero))} src={props.respondido.includes(props.pergunta.Numero) ? Resultado : Play} alt="Seta de play generica"/>
+              </Fechada>}
         </li>
 
     )
@@ -87,10 +95,14 @@ width: 300px;
   font-weight: 700;
   font-size: 16px;
   line-height: 19px;
-  color: #333333;
 
   p{
-    text-decoration: ${props => props.final.includes(props.numeroclicado) ? "line-through" : ""}
+    text-decoration: ${props => props.final.includes(props.numeroclicado) ? "line-through" : ""};
+    color: ${props => props.cor};
+  }
+
+  img{
+    cursor:pointer;
   }
 
   `;
@@ -121,7 +133,13 @@ width:20px;
 height:20px;
 bottom: 10px;
 right: 10px;
+cursor:pointer;
 }
+
+button{
+  cursor:pointer;
+}
+
 `
 const ConteinerBotoes = styled.div`
     display: flex;

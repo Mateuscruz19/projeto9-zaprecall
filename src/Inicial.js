@@ -5,10 +5,15 @@ import Logo from './assets/img/logo.png'
 
 export default function Inicial(props) {
 
-    
+   
 
     function IniciarJogo(){
-        props.setBemVindo(false)
+        if(props.metas > 1){
+            props.setBemVindo(false)
+        }else{
+            alert("Voce precisa adicionar um numero de metas,e ela deve ser maior que 1,tente novamente :D")
+            return
+        }
     }
 
     return (
@@ -16,7 +21,7 @@ export default function Inicial(props) {
             <Conteiner>
                 <img src={Logo} alt="Logo em formato de raio" />
                 <h1>ZapRecall</h1>
-                <input placeholder='Digite sua meta de zaps...'></input>
+                <input  onChange={(m) => props.setMetas(m.target.value)}   placeholder='Digite sua meta de zaps...'></input>
                 <select name='Deck' value={props.opcao} onChange={o => props.setOpcao(o.target.value)}>
                     <option value="0">React</option>
                     <option value="1">JavaScript</option>
