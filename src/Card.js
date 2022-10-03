@@ -12,13 +12,11 @@ import Virar from "./assets/img/seta_virar.png"
 export default function Card(props){
    
     const [Clicou, setClicou] = useState(false)
-    const [Finalizado, setFinalizado] = useState(false)
     const [Resultado, setResultado] = useState(IconeSim)
     const [cor, setCor] = useState("Black")
 
     function naoLembrei(){
        props.setConcluidas(props.concluidas+1)
-       setFinalizado(true)
        const Clicado = props.pergunta.Numero
        props.setRespondido([...props.respondido,Clicado])
        props.setAbriu()
@@ -28,7 +26,6 @@ export default function Card(props){
 
     function quaseNaoLembrei(){
       props.setConcluidas(props.concluidas+1)
-      setFinalizado(true)
       const Clicado = props.pergunta.Numero
        props.setRespondido([...props.respondido,Clicado])
        props.setAbriu()
@@ -39,7 +36,6 @@ export default function Card(props){
 
     function zap(){
       props.setConcluidas(props.concluidas+1)
-      setFinalizado(true)
       const Clicado = props.pergunta.Numero
       props.setRespondido([...props.respondido,Clicado])
       props.setAbriu()
@@ -55,22 +51,22 @@ export default function Card(props){
             
             ? 
             
-            <Aberta> {Clicou ? props.pergunta.R : props.pergunta.Q} {Clicou 
+            <Aberta data-identifier="flashcard-question-flashcard-answer-flashcard-index-item"> {Clicou ? props.pergunta.R : props.pergunta.Q} {Clicou 
             ?
              <ConteinerBotoes>
-                <BotaoNaoLembrei onClick={naoLembrei} >Não <br/> lembrei</BotaoNaoLembrei>
-                <BotaoQuaseLembrei onClick={quaseNaoLembrei}>quase não <br/> lembrei</BotaoQuaseLembrei>
-                  <BotaoRespostaZap onClick={zap}>Zap!</BotaoRespostaZap>
+                <BotaoNaoLembrei data-identifier="forgot-btn" onClick={naoLembrei} >Não <br/> lembrei</BotaoNaoLembrei>
+                <BotaoQuaseLembrei data-identifier="almost-forgot-btn" onClick={quaseNaoLembrei}>quase não <br/> lembrei</BotaoQuaseLembrei>
+                  <BotaoRespostaZap data-identifier="zap-btn" onClick={zap}>Zap!</BotaoRespostaZap>
              </ConteinerBotoes> 
              :
-              <img  src={Virar} alt="Botao de girar" onClick={() => setClicou(true)} />} 
+              <img data-identifier="flashcard-turn-btn-flashcard-status" src={Virar} alt="Botao de girar" onClick={() => setClicou(true)} />} 
             </Aberta> 
 
             :
 
-             <Fechada disabled final={props.respondido} numeroclicado={props.pergunta.Numero} cor={cor}>
+             <Fechada  data-identifier="flashcard"  disabled final={props.respondido} numeroclicado={props.pergunta.Numero} cor={cor}>
               <p>Pergunta {props.pergunta.Numero}</p>
-              <img onClick={props.respondido.includes(props.pergunta.Numero) ? undefined : (() => props.setAbriu(props.pergunta.Numero))} src={props.respondido.includes(props.pergunta.Numero) ? Resultado : Play} alt="Seta de play generica"/>
+              <img data-identifier="flashcard-show-btn" onClick={props.respondido.includes(props.pergunta.Numero) ? undefined : (() => props.setAbriu(props.pergunta.Numero))} src={props.respondido.includes(props.pergunta.Numero) ? Resultado : Play} alt="Seta de play generica"/>
               </Fechada>}
         </li>
 

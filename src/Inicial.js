@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import { useState } from 'react';
 import Logo from './assets/img/logo.png'
 
 export default function Inicial(props) {
@@ -21,14 +20,14 @@ export default function Inicial(props) {
             <Conteiner>
                 <img src={Logo} alt="Logo em formato de raio" />
                 <h1>ZapRecall</h1>
-                <input  onChange={(m) => props.setMetas(m.target.value)}   placeholder='Digite sua meta de zaps...'></input>
-                <select name='Deck' value={props.opcao} onChange={o => props.setOpcao(o.target.value)}>
-                    <option value="0">React</option>
-                    <option value="1">JavaScript</option>
-                    <option value="2">Css</option>
-                    <option value="3">Html</option>
+                <input data-identifier="goals-input"  onChange={(m) => props.setMetas(m.target.value)}   placeholder='Digite sua meta de zaps...'></input>
+                <select data-identifier="deck-selector" name='Deck' value={props.opcao} onChange={o => props.setOpcao(o.target.value)}>
+                    <option data-identifier="deck-option" value="0">React</option>
+                    <option data-identifier="deck-option" value="1">JavaScript</option>
+                    <option data-identifier="deck-option" value="2">Css</option>
+                    <option data-identifier="deck-option" value="3">Html</option>
                 </select>
-                <button onClick={IniciarJogo}>Iniciar Recall!</button>
+                <button data-identifier="start-btn" onClick={IniciarJogo}>Iniciar Recall!</button>
             </Conteiner>
         </>
     )

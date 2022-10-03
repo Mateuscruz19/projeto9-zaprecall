@@ -1,8 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import { useState } from 'react';
+// import { useState } from 'react';
 import Lista from './Lista';
-import Card from './Card';
 import Sad from './assets/img/sad.png'
 import Party from './assets/img/party.png'
 
@@ -15,10 +14,10 @@ export default function Footer(props){
     return(
         <>
         <FooterInicial concluidas={props.concluidas} total={Lista[props.opcao].length}>
-            <p>{props.concluidas}/{Lista[props.opcao].length} CONCLUÍDOS</p>
+            <p data-identifier="flashcard-counter">{props.concluidas}/{Lista[props.opcao].length} CONCLUÍDOS</p>
             {props.concluidas === Lista[props.opcao].length ? 
-            props.zaps >= props.metas ? <Result>Parabéns,voce bateu a meta de Zaps!!! <img src={Party}></img></Result>
-            : <Result>Putz,você não bateu sua meta de zaps,mas nao desista!<img src={Sad}/></Result> : <></>}
+            props.zaps >= props.metas ? <Result>Parabéns,voce bateu a meta de Zaps!!! <img src={Party} alt="emoji de comemoração!"></img></Result>
+            : <Result>Putz,você não bateu sua meta de zaps,mas nao desista!<img src={Sad} alt="emoji de tristeza"/></Result> : <></>}
         </FooterInicial>
         </>
     )
